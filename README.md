@@ -132,7 +132,7 @@ https://github.com/luigigubello/PayloadsAllThePDFs/blob/main/PDF%20Files/payload
 ```
 4. Compile and Upload SWF file: <br>
 
-Create an ActionScript file (.as) with the below source code and compile it with ```mtasc -swf asd.swf -main -header 0:0:0 test.as``` (Source: https://github.com/ncannasse/mtasc)
+Create an ActionScript file (.as) with the source code from below and compile it by running ```mtasc -swf asd.swf -main -header 0:0:0 test.as``` (Source: https://github.com/ncannasse/mtasc)
 
 ```
 class XSS {
@@ -146,12 +146,12 @@ class XSS {
 }}
 
 ```
-5.Upload GIF file:
+5. Upload GIF file:
 ```
 GIF89a/<svg/onload=alert(1)>/=alert(document.domain)//;
 ```
 
-6.  Upload file with XSS payload within its name
+6. Upload file with XSS payload within its name
 ```
 image.jpeg -> image'"><script>alert()</script>.jpeg
 ```
@@ -173,7 +173,7 @@ Upload ```.SVG, .XML, .XSD, .XMP, .XSLT, .XHTML``` files with payloads
 
 https://github.com/payloadbox/xxe-injection-payload-list
 
-If ```SYSTEM``` entity is restricted, then try Billion Laughs attack for Application Denial-of-Service (DoS)
+If the ```SYSTEM``` entity is restricted, then try the Billion Laughs attack for Application Denial-of-Service (DoS)
 
 ```
 <?xml version="1.0"?>
@@ -195,7 +195,7 @@ If ```SYSTEM``` entity is restricted, then try Billion Laughs attack for Applica
 
 ## Malicious File Upload
 
-1. Upload an Anti Malware Testfile - EICAR (will not do any harm if executed, but it is detected by almost all anti-virus vendors) in order to check if there is an anti-virus check before storing the file
+1. Upload an Anti Malware Testfile - EICAR (which will not do any harm if executed, but is detected by almost all anti-virus vendors) in order to check if there is an anti-virus check before storing the file
 
 Link: https://www.eicar.org/download-anti-malware-testfile/
 
@@ -219,12 +219,12 @@ Possible options:
 ../bob_folder/image.jpg
 ```
 
-2. Upload a file with big size or achives containing huge files -> Check for Storage-based Denial-of-Service (DoS) or Overbill if the storage has auto-scaling.<br>
+2. Upload a file with a big size or achives containing huge files -> Check for Storage-based Denial-of-Service (DoS) or Overbill if the storage has auto-scaling.<br>
 
 Alternatively, split the file in multiple chunks (```image1.jpg```, ```image2.jpg```, and so on) and upload them
 <br>
 
-3. Upload a file with the name of an existing file -> check if overwritting is possible. Example of an ```.htaccess``` to allow execution of PHP file ```rce.php```:
+3. Upload a file with the name of an existing file -> check if overwriting is possible. Example of a ```.htaccess``` to allow the execution of the PHP file ```rce.php```:
 ```
 <Files ~ "^\.php">
 Require all granted
@@ -234,7 +234,7 @@ Require all granted
 
 AddType application/x-httpd-php rce.php
 ```
-4. Check if uploaded file can be accessed without authentication (Missing Authentication) or by other users (Broken Access Controls)
+4. Check if the uploaded file can be accessed without authentication (Missing Authentication) or by other users (Broken Access Controls)
 
 5. Upload file containing a long name -> trigger logical issues or verbose errors
 ```
@@ -274,7 +274,7 @@ exiftool image.jpeg
 # Login/Register Page
 ## Username Enumeration
 
-1. Through error message
+1. Through error messages
 
 Invalid Username & Invalid Password:
 ```
@@ -293,7 +293,7 @@ Incorrect password
 Invalid Username & Invalid Password: ```Response size: 20KB ``` (example)
 
 
-Valid Username & Invalid Password (same password as above): ```Response size: 150KB``` (example)
+Valid Username & Invalid Password (the same password as above): ```Response size: 150KB``` (example)
 
 
 
@@ -302,14 +302,14 @@ Valid Username & Invalid Password (same password as above): ```Response size: 15
 Invalid Username & Invalid Password: ```Response time: 5,000 ms``` (example)
 
 
-Valid Username & Invalid Password (same password as above): ```Response time: 100 ms``` (example) 
+Valid Username & Invalid Password (the same password as above): ```Response time: 100 ms``` (example) 
 
 ## SQL Injection
 
 ```
 SELECT * FROM USERS WHERE username = '<user input>' and password = '<password input>';
 ```
-That is one of the classic and very vulnerable queries for a login page
+That is one of the classics and very vulnerable queries for a login page
 
 Insert the following username to bypass authentication: ```admin' or '1'='1'-- -```
 
@@ -328,7 +328,7 @@ Check data breaches for any exposed credentials that can be used to compromise a
 
 ## Unvalidated Redirect
 
-If the application hardcodes a value that the user will be redirected after login through a GET parameter (such as ```?redirect_url=```):
+If the application hardcodes a value that the user will be redirected to after login through a GET parameter (such as ```?redirect_url=```):
 ```
 https://vulnerable-target/login/?redirect_url=https://phishing-website --> For Open Redirect after login
 https://vulnerable-target/login/?redirect_url=javascript:alert()  --> For Cross-Site Scripting (XSS) after login
@@ -337,10 +337,10 @@ https://vulnerable-target/login/?redirect_url=javascript:alert()  --> For Cross-
 
 ## Brute-Force
 
-Use Burp Suite's Intruder to test if after 100 failed (or another treshold) failed login attempts, there will be accepted a valid login.
+Use Burp Suite's Intruder to test if after 100 (or another threshold) failed login attempts, there will still be a valid login accepted.
 
 ## Weak/Common Passwords
-1. Register an account with blank password -> Null password accepted
+1. Register an account with a blank password -> Null password accepted
 2. Register an account with ```a``` or ```1``` as a password -> Missing Password Policy
 3. Register an account with ```123456789``` or ```asd12345``` as a password -> Weak Password Policy
 4. Register an account with the same username and password (e.g. ```zerotak:zerotak```) -> Weak Password Policy
@@ -354,7 +354,7 @@ Use Burp Suite's Intruder to test if after 100 failed (or another treshold) fail
 
 
 # Forgot Password Function
-All vulnerabilities and test cases from previous section should be applied here too. Besides those below you will find specific attacks on Forgot Password pages and features.
+All vulnerabilities and test cases from the previous section should be applied here as well. Besides those from above, you will find below specific attacks on Forgot Password pages and features.
 
 ## Account Takeover
 1. Through reset password token disclosed in response
@@ -366,7 +366,7 @@ Modify the ```Host:``` request header to match your listener's hostname/IP addre
 
 ## Persistent Forgot Password Token
 1. Check if the forgot password token can be used after a long period of time (e.g. 1-2 weeks)
-2. Check if the forgot password token can be still used after its first usage (Missing Invalidation)
+2. Check if the forgot password token can still be used after its first usage (Missing Invalidation)
 
 
 ## Cross-Site Scripting (XSS)
@@ -383,7 +383,7 @@ https://vulnerable-target/reset-password/?token='"><img src=x onerror=alert()></
 
 ## Predictable Reset Password Token
 
-1. Send a reset password request in the same time for two different accounts owned by you
+1. Send a reset password request at the same time for two different accounts owned by you
 2. Copy and inspect the password reset tokens
 3. Analyze them for any predictable components. You can take in consideration the following: ```timestamp``` ```usernames``` ```email```
 
@@ -392,7 +392,7 @@ https://vulnerable-target/reset-password/?token='"><img src=x onerror=alert()></
 # My Account
 
 ## Missing Old Password Validation
-Check if the password change feature within My Account page contains a check for the Old/Current Password.
+Check if the password change feature within the My Account page contains a check for the Old/Current Password.
 
 Can be coupled with ```Cross-Site Request Forgery``` (One click-interaction account takeover).
 
@@ -409,7 +409,7 @@ Example of request to pull your account's details:
 ```
 GET /my-account/?userID=1234
 ```
-Retrieve other account's details:
+Retrieve another account's details:
 
 ```
 GET /my-account/?userID=1235
@@ -461,7 +461,7 @@ For some applications, the export function adds another character in front of th
 
 
 ## Application Denial-of-Service (DoS)
-Try requesting multiple exports of huge amounts of information from the application in the same time. Can be done using Burp Suite's intruder functionality.
+Try requesting multiple exports of huge amounts of information from the application at the same time. Can be done using Burp Suite's intruder functionality.
 
 
 ## Insecure Storage of Exports
@@ -478,11 +478,11 @@ If the exports are stored Server-Side, please check the ```File Storage Attacks`
 
 ## Abuse of Google Maps API Key for Financial Damage
 
-1. Navigate through the application until you reach a page where Google Maps are displayed
-2. Check the requests using Network tab from Browser's Web Developer Tools
+1. Navigate through the application until you reach a page where Google Maps is displayed
+2. Check the requests using the Network tab from the Browser's Web Developer Tools
 3. Identify the requests going to ```maps.googleapis.com``` and capture the value of the ```key``` parameter (format: ```AIza...```)
 4. Use the script here: https://github.com/ozguralp/gmapsapiscanner to check if the token can be used outside of the application
-5. If yes, then you can create an automated script to send a lot of requests using victim's token, in order to consume the quota and potentially produce an overbill
+5. If yes, then you can create an automated script to send a lot of requests using the victim's token, in order to consume the quota and potentially produce an overbill
 
 
 
@@ -517,9 +517,6 @@ userID=1235
 Check if the API keys can be used even after the removal of them from the account.
 
 <br>
-
-
-
 
 # To Do:
 
