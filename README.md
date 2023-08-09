@@ -85,6 +85,20 @@ Table of Contents
    * [Private Key Disclosure](#private-key-disclosure)
    * [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference-idor-1)
    * [Persistent API Keys](#persistent-api-keys)
+ * [Contact Forms](#contact-forms)
+   * [Missing Rate-Limiting/Captcha](#missing-rate-limiting-captcha)
+   * [HTML Injection through Mailbox](#html-injection-through-mailbox)
+   * [Email Injection](#email-injection)
+   * [SQL Injection](#sql-injection)
+ * [Users Management Page](#users-management-page)
+   * [Application Lockout](#application-lockout)
+   * [Missing Session Invalidation after Password Change/Account Deletion/Change Privileges](#missing-session-invalidation-after-password-change-account-deletion-change-privileges)
+   * [Cleartext Password View](#cleartext-password-view)
+   * [CSV Injection](#csv-injection)
+ * [Markdown Editor Pages](#markdown-editor-pages)
+   * [Link Injection -> Cross-Site Scripting (XSS)](#link-injection)
+   * [Markdown-based Cross-Site Scripting (XSS)](#markdown-based-cross-site-scripting-xss)
+   * [Application Denial-of-Service (DoS) due Missing Input Size Check](#application-denial-of-service-dos-due-missing-input-size-check)
 * [To Do](#to-do)
 
   <br><br>
@@ -599,12 +613,9 @@ python -c "print('A'*10000000)"
 
 # To Do:
 
-- [ ] Markdown Editor Pages
 - [ ] Financial-related Functions
 - [ ] Chat/Messages
 - [ ] Blog Posts
-- [ ] Contact Forms
-- [ ] Users Management Page
 
 
 
