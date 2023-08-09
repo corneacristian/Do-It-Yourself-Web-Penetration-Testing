@@ -516,6 +516,68 @@ userID=1235
 
 Check if the API keys can be used even after the removal of them from the account.
 
+# Contact Forms
+
+## Missing Rate-Limiting/Captcha
+1. Send a valid request to the contact form
+2. Intercept the request using Burp Suite
+3. Send the request to Intruder and repeat it for 'x' times
+
+Note: Usually the contact forms display the captcha only after some repeated requests, which means that if you identify a visually missing captcha on the form, it doesn't reflect the real status of the captcha (active).
+
+## HTML Injection through Mailbox
+
+Usually, the request sent through the contact form ends up in a mailbox, which means that you can phish the administrator using an HTML injection payload like that:
+
+```
+Please contact me back <a href="https://phishing-website">here</a>
+```
+
+## Email Injection
+
+Original request sent through a contact form:
+```
+POST /contact.php 
+
+name=Cristian&email=cristian@zerotak.com&subject=Hello&body=Nice to meet you! 
+```
+
+Tampered request where you can inject an additional parameter within the email headers (CC, BCC, etc.):
+
+```
+POST /contact.php 
+
+name=Cristian&email=cristian@zerotak.com\nbcc: shadows@zerotak.com&subject=Hello&body=Nice to meet you!  
+```
+
+## SQL Injection
+
+You can try injection within all the input values that are being transmitted through the contact form.
+
+# Users Management Page
+
+
+## Application Lockout
+
+Try deleting or changing permissions for all of the high-privileged users and administrators in order to cause a lockout of the application, where there will be no account able to perform administrative changes.
+
+## Missing Session Invalidation after Password Change/Account Deletion/Change Privileges
+
+1. Open a session in browser for user "Bob"
+2. Change the password/privileges or delete the account of user "Bob" through the users management page
+3. Did your session expire? 
+
+## Cleartext Password View
+
+Check if you are able to view the passwords of users, through the User Interface (UI) or through the API. Users may use those passwords for other platforms too!
+
+## CSV Injection
+
+Usually, the administrators have the option to export the list of users. In that case, check <a href="https://github.com/corneacristian/Do-It-Yourself-Web-Penetration-Testing/edit/main/README.md#formula-injection"> Formula Injection</a> section.
+
+
+
+
 <br>
 
 # To Do:
