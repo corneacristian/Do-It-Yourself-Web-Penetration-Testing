@@ -575,7 +575,24 @@ Check if you are able to view the passwords of users, through the User Interface
 
 Usually, the administrators have the option to export the list of users. In that case, check <a href="https://github.com/corneacristian/Do-It-Yourself-Web-Penetration-Testing/edit/main/README.md#formula-injection"> Formula Injection</a> section.
 
+# Markdown Editor Pages
 
+## Link Injection -> Cross-Site Scripting (XSS)
+Markdown editors allow you to insert hyperlinks that redirects on click to an arbitrary URL provided as user input.
+
+There you can insert an XSS-based redirection such as ```javascript:alert()``` instead of a valid URL.
+
+## Markdown-based Cross-Site Scripting (XSS)
+Check <a href="https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting/xss-in-markdown">here </a>
+
+## Application Denial-of-Service (DoS) due Missing Input Size Check
+Markdown editors are the ones usually most vulnerable to denial-of-service when trying to process huge chunks of user input. The issue is mainly within the conversion from markdown to text.
+
+Create input of big size:
+
+```
+python -c "print('A'*10000000)"
+```
 
 
 <br>
