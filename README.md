@@ -1,5 +1,5 @@
 <h1 align="center"> DIY Web Penetration Testing</h1>
-<p align="center"><b> Version: 1.0 </b></p>
+<p align="center"><b> Version: 1.1 </b></p>
 
 
 <p align="center">Do It Yourself! (DIY) Web Penetration Testing is a guideline in performing security test cases against web applications <br></p>
